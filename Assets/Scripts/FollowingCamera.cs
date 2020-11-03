@@ -10,7 +10,7 @@ using UnityEditor;
 public class FollowingCamera : MonoBehaviour
 {
     public GameObject Target;
-    public float smoothVal = 0.01f;
+    public float smoothVal = 0.5f;
     // Start is called before the first frame update
     void Start()
     {

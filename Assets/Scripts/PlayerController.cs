@@ -7,49 +7,44 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEditor;
-
+using Unity.Mathematics;
 
 public class PlayerController : MonoBehaviour
 {
-    public float Speed = 200;
+    public float Speed = 10;
     public float TurnSpeed = 10f;
     Rigidbody2D myRB;
+    float horizontal;
+    float vertical;
+    float moveLimiter = 0.7f;
+    
     //Vector3 startingUp;
     //Vector3 startingRight;
     // Start is called before the first frame update
     void Start()
     {
         myRB = GetComponent<Rigidbody2D>();
-        //startingUp = transform.up;
-        //startingRight = transform.right;
     }
 
     
     // Update is called once per frame
     void Update()
     {
-        //set up stored variable for movement
-        Vector2 movement = new Vector2();
-        
-        //check for input and use that to move 
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
+        //get the input from player
+        horizontal = Input.GetAxisRaw("Horizontal");
+        vertical = Input.GetAxisRaw("Vertical");
+    }
 
-        //get mouse position as world point
-        //Vector2 mouseScreenPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    private void FixedUpdate()
+    {
+        //set velocity to input
+        if (horizontal != 0 && vertical != 0) // Check for diagonal movement
+        {
+            //limit the diagonal movespeed
+            horizontal *= moveLimiter;
+            vertical *= moveLimiter;
+        }
 
-        //get pointer direction
-        //Vector2 direction = (mouseScreenPosition - (Vector2)transform.position).normalized;
-
-        //set player up vector to smoothed direction
-        //transform.up += Vector3.Lerp(transform.up, direction, TurnSpeed);
-        
-        //Set forward and backward speeds
-        myRB.AddForce(transform.up * movement.y * Speed * Time.deltaTime);
-        myRB.AddTorque((-movement.x) * TurnSpeed * Time.deltaTime);
-
-        //myRB.AddForce(startingRight * movement.x * Speed * Time.deltaTime);
-
-        
+        myRB.velocity = new Vector2(horizontal * Speed, vertical * Speed);
     }
 }
