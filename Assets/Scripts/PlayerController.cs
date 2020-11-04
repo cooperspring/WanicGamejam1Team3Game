@@ -12,15 +12,19 @@ using UnityEditorInternal;
 
 public class PlayerController : MonoBehaviour
 {
-    public float Speed = 10;
+    public float Speed = 50;
     public float TurnSpeed = 10f;
     Rigidbody2D myRB;
     float horizontal;
     float vertical;
     float moveLimiter = 0.7f;
     
-    //Vector3 startingUp;
-    //Vector3 startingRight;
+    //this array will hold up to 10 items. each entry in the array is an itemID, assigning 1 means you have it, 0 means you don't.
+    //items will be listed here as added after level design is laid out, 0-10. Weapons are seperately tracked.
+    //We will check for item collision at the onCollisionEnter function. We may change implementation to input in a radius around the item -> item pick up
+    //Example : testKey = 0
+    public static int[] heldItemsDatabase = new int[11];
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,8 +38,6 @@ public class PlayerController : MonoBehaviour
         //get the input from player
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
-
-       
     }
 
     private void FixedUpdate()
@@ -49,7 +51,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //set the velocity of the player to the input values
-        myRB.velocity = new Vector2(horizontal * Speed, vertical * Speed).normalized;
+        myRB.velocity = new Vector2(horizontal * Speed, vertical * Speed);
 
         //temporary method of setting direction rotation, may be changed for efficiency
         //try a switch if it isn't bugging out later (compiler error only in unity)
@@ -72,44 +74,63 @@ public class PlayerController : MonoBehaviour
          */
         if (horizontal > 0 && vertical == 0)
         {
-            myRB.SetRotation(0);
+            myRB.SetRotation(-90);
         }
 
         if (horizontal > 0 && vertical > 0)
         {
-            myRB.SetRotation(45);
+            myRB.SetRotation(-45);
         }
 
         if (horizontal == 0 && vertical > 0)
         {
-            myRB.SetRotation(90);
+            myRB.SetRotation(0);
         }
 
         if (horizontal < 0 && vertical > 0)
         {
-            myRB.SetRotation(135);
+            myRB.SetRotation(45);
         }
 
         if (horizontal < 0 && vertical == 0)
         {
-            myRB.SetRotation(180);
+            myRB.SetRotation(90);
         }
 
         if (horizontal < 0 && vertical < 0)
         {
-            myRB.SetRotation(225);
+            myRB.SetRotation(135);
         }
 
         if (horizontal == 0 && vertical < 0)
         {
-            myRB.SetRotation(270);
+            myRB.SetRotation(180);
         }
 
         if (horizontal > 0 && vertical < 0)
         {
-            myRB.SetRotation(315);
+            myRB.SetRotation(225);
         }
 
         
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        //checks cases of collision, carries out consequences depending on case
+        if(collision.gameObject.name == "Flare Gun")
+        {
+            PlayerShoot.currentWeapon = 1;
+            Destroy(collision.gameObject);
+        }
+        else if(collision.gameObject.name == "Harpoon Gun")
+        {
+            PlayerShoot.currentWeapon = 2;
+        }
+        else if(collision.gameObject.name == "testKey")
+        {
+            heldItemsDatabase[0] = 1;
+            Destroy(collision.gameObject);
+        }
     }
 }
