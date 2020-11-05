@@ -30,18 +30,21 @@ public class PlayerShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Timer += Time.deltaTime;
-        //spacebar fires
-        if(Input.GetAxisRaw("Jump") > 0)
+        if (PauseMenu.isPaused == false)
         {
-            //check if player even has a weapon
-            if (currentWeapon != 0)
+            Timer += Time.deltaTime;
+            //spacebar fires
+            if (Input.GetAxisRaw("Jump") > 0)
             {
-                if (Timer >= Cooldown)
+                //check if player even has a weapon
+                if (currentWeapon != 0)
                 {
-                    Timer = 0;
-                    CameraShake.TriggerShake(0.2f, 0.02f);
-                    Fire(transform.position, transform.up);
+                    if (Timer >= Cooldown)
+                    {
+                        Timer = 0;
+                        CameraShake.TriggerShake(0.2f, 0.02f);
+                        Fire(transform.position, transform.up);
+                    }
                 }
             }
         }

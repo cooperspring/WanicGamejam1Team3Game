@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEditor;
 using Unity.Mathematics;
-using UnityEditorInternal;
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -42,77 +42,79 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //set velocity to input
-        if (horizontal != 0 && vertical != 0) // Check for diagonal movement
+        if(PauseMenu.isPaused == false)
         {
-            //limit the diagonal movespeed
-            horizontal *= moveLimiter;
-            vertical *= moveLimiter;
+            //set velocity to input
+            if (horizontal != 0 && vertical != 0) // Check for diagonal movement
+            {
+                //limit the diagonal movespeed
+                horizontal *= moveLimiter;
+                vertical *= moveLimiter;
+            }
+
+            //set the velocity of the player to the input values
+            myRB.velocity = new Vector2(horizontal * Speed, vertical * Speed);
+
+            //temporary method of setting direction rotation, may be changed for efficiency
+            //try a switch if it isn't bugging out later (compiler error only in unity)
+            //for the switch, use bool negativePressH/V, PressH/V, and notPressedH/V declared at top, make sure to reset at end of update
+            /*
+             if(horizontal > 0)
+             {
+                PressH = true;
+             }
+             else if(horizontal < 0)
+             {
+                negativePressH = true;
+             }
+             else
+             {
+                notPressedH = true;
+             }
+
+             And Et Cetera...
+             */
+            if (horizontal > 0 && vertical == 0)
+            {
+                myRB.SetRotation(-90);
+            }
+
+            if (horizontal > 0 && vertical > 0)
+            {
+                myRB.SetRotation(-45);
+            }
+
+            if (horizontal == 0 && vertical > 0)
+            {
+                myRB.SetRotation(0);
+            }
+
+            if (horizontal < 0 && vertical > 0)
+            {
+                myRB.SetRotation(45);
+            }
+
+            if (horizontal < 0 && vertical == 0)
+            {
+                myRB.SetRotation(90);
+            }
+
+            if (horizontal < 0 && vertical < 0)
+            {
+                myRB.SetRotation(135);
+            }
+
+            if (horizontal == 0 && vertical < 0)
+            {
+                myRB.SetRotation(180);
+            }
+
+            if (horizontal > 0 && vertical < 0)
+            {
+                myRB.SetRotation(225);
+            }
+
         }
-
-        //set the velocity of the player to the input values
-        myRB.velocity = new Vector2(horizontal * Speed, vertical * Speed);
-
-        //temporary method of setting direction rotation, may be changed for efficiency
-        //try a switch if it isn't bugging out later (compiler error only in unity)
-        //for the switch, use bool negativePressH/V, PressH/V, and notPressedH/V declared at top, make sure to reset at end of update
-        /*
-         if(horizontal > 0)
-         {
-            PressH = true;
-         }
-         else if(horizontal < 0)
-         {
-            negativePressH = true;
-         }
-         else
-         {
-            notPressedH = true;
-         }
-         
-         And Et Cetera...
-         */
-        if (horizontal > 0 && vertical == 0)
-        {
-            myRB.SetRotation(-90);
-        }
-
-        if (horizontal > 0 && vertical > 0)
-        {
-            myRB.SetRotation(-45);
-        }
-
-        if (horizontal == 0 && vertical > 0)
-        {
-            myRB.SetRotation(0);
-        }
-
-        if (horizontal < 0 && vertical > 0)
-        {
-            myRB.SetRotation(45);
-        }
-
-        if (horizontal < 0 && vertical == 0)
-        {
-            myRB.SetRotation(90);
-        }
-
-        if (horizontal < 0 && vertical < 0)
-        {
-            myRB.SetRotation(135);
-        }
-
-        if (horizontal == 0 && vertical < 0)
-        {
-            myRB.SetRotation(180);
-        }
-
-        if (horizontal > 0 && vertical < 0)
-        {
-            myRB.SetRotation(225);
-        }
-
-        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
