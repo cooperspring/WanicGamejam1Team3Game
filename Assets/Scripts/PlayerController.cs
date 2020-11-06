@@ -124,10 +124,12 @@ public class PlayerController : MonoBehaviour
         {
             PlayerShoot.currentWeapon = 1;
             Destroy(collision.gameObject);
+            
         }
         else if(collision.gameObject.name == "Harpoon Gun")
         {
             PlayerShoot.currentWeapon = 2;
+           
         }
         else if(collision.gameObject.name == "testKey")
         {
