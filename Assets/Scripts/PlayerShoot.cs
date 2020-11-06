@@ -63,7 +63,8 @@ public class PlayerShoot : MonoBehaviour
                 //move bullet
                 projFlareGun.transform.Translate(Vector3.up * 0.90f, Space.Self);
                 projFlareGun.transform.Translate(Vector3.right * 0.235f, Space.Self);
-                
+                AudioManage.PlaySound("flareShot");
+
                 break;
             case 2:
                 GameObject projHarpoonGun = Instantiate<GameObject>(ProjectileHarpoonGun, position, transform.rotation);
