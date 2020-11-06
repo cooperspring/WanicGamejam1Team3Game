@@ -5,10 +5,13 @@ using UnityEngine;
 
 public class lockedDoorController : MonoBehaviour
 {
+    //let the object needed to unlock the door be changed
+    public int Key = 0;
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //check if the player holds a key, and if the player is even colliding with the door
-        if(collision.gameObject.name == "Player" && PlayerController.heldItemsDatabase[0] == 1)
+        if (collision.gameObject.name == "Player" && PlayerController.heldItemsDatabase[Key] == 1)
         {
             Destroy(gameObject);
         }
