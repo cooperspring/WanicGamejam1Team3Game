@@ -136,5 +136,10 @@ public class PlayerController : MonoBehaviour
             heldItemsDatabase[0] = 1;
             Destroy(collision.gameObject);
         }
+        else if(collision.gameObject.name == "Crowbar")
+        {
+            heldItemsDatabase[1] = 1;
+            Destroy(collision.gameObject);
+        }
     }
 }
