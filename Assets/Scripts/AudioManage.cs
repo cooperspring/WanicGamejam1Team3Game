@@ -14,13 +14,13 @@ public class AudioManage : MonoBehaviour
     // Start is called before the first frame updated w
     void Start()
     {
-        playerHitSound = Resources.Load<AudioClip>("sharkhit4");
+        playerHitSound = Resources.Load<AudioClip>("Sounds/sharkhit4");
         audioSrc = GetComponent<AudioSource>();
 
-        harpoonShotSound = Resources.Load<AudioClip>("harpoonshot");
+        harpoonShotSound = Resources.Load<AudioClip>("Sounds/harpoonshot");
         audioSrc = GetComponent<AudioSource>();
 
-        flareShotSound = Resources.Load<AudioClip>("flareshot");
+        flareShotSound = Resources.Load<AudioClip>("Sounds/flareshot");
         audioSrc = GetComponent<AudioSource>();
 
     }

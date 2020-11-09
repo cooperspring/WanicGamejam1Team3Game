@@ -18,6 +18,10 @@ public class PlayerController : MonoBehaviour
     float horizontal;
     float vertical;
     float moveLimiter = 0.7f;
+    public SpriteRenderer spriteRenderer;
+    public Sprite defaultPlayerSprite;
+    public Sprite flareGunPlayerSprite;
+    public Sprite HarpoonGunPlayerSprite;
     
     //this array will hold up to 10 items. each entry in the array is an itemID, assigning 1 means you have it, 0 means you don't.
     //items will be listed here as added after level design is laid out, 0-10. Weapons are seperately tracked.
@@ -31,6 +35,10 @@ public class PlayerController : MonoBehaviour
         myRB = GetComponent<Rigidbody2D>();
     }
 
+    void ChangeSprite(Sprite spriteToChange)
+    {
+        spriteRenderer.sprite = spriteToChange;
+    }
     
     // Update is called once per frame
     void Update()
@@ -124,11 +132,13 @@ public class PlayerController : MonoBehaviour
         {
             PlayerShoot.currentWeapon = 1;
             Destroy(collision.gameObject);
-            
+            ChangeSprite(flareGunPlayerSprite);
         }
         else if(collision.gameObject.name == "Harpoon Gun")
         {
             PlayerShoot.currentWeapon = 2;
+            Destroy(collision.gameObject);
+            ChangeSprite(HarpoonGunPlayerSprite);
            
         }
         else if(collision.gameObject.name == "testKey")

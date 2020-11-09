@@ -33,7 +33,7 @@ public class AIShark : MonoBehaviour
     {
         if (activeChase)
         {
-            //if the booleans here are true, we want to do them every frame we are chasing
+            //if the booleans here are true, we want to do them every frame that the shark is in chase state 
             //the booleans control timers and determine whether or not the shark should move / change the first boolean to start a new lunge
             if(movingToStoredTarget == true)
             {
