@@ -13,7 +13,6 @@ public class SearchObject : MonoBehaviour
 {
     public GameObject searchItem;
     public static bool IsSearching;
-    Collider2D SearchObjectCollider;
     bool Searched = false;
     [Tooltip("Time in seconds it takes to search")]
     public int SearchTime;
@@ -29,7 +28,7 @@ public class SearchObject : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SearchObjectCollider = GetComponent<Collider2D>();
+        
     }
 
     // Update is called once per frame
@@ -42,10 +41,14 @@ public class SearchObject : MonoBehaviour
     {
         if (!IsSearching)
         {
+            //update text to tell player how to search
             instructions.text = InstructionText;
         }
+
+        //when the player hits space, it will start searching
         if (Input.GetAxisRaw("Jump") > 0)
         {
+            //tell player that they are searching and then set the wait time
             IsSearching = true;
             instructions.text = SearchingText;
             StartCoroutine(SearchWait());
@@ -55,16 +58,19 @@ public class SearchObject : MonoBehaviour
     //pause for the character to search
     IEnumerator SearchWait()
     {
+        //wait for the specified amount of time
         yield return new WaitForSeconds(SearchTime);
         Searched = true;
         IsSearching = false;
         instructions.text = FinishedText;
+        //create the gameobject if there is one
         Instantiate<GameObject>(searchItem, transform.position, Quaternion.identity);
     }
 
     //notice when a trigger hits the piece
     private void OnTriggerStay2D(Collider2D collision)
     {
+        //only activate if they haven't already searched
         if(!Searched)
         {
             Search();

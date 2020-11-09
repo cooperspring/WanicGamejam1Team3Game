@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(PauseMenu.isPaused == false && SearchObject.IsSearching == false)
+        if(!PauseMenu.isPaused && !SearchObject.IsSearching && !ChestOpen.Open)
         {
             //set velocity to input
             if (horizontal != 0 && vertical != 0) // Check for diagonal movement

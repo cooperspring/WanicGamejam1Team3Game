@@ -11,6 +11,7 @@ using UnityEngine;
 
 public class ObjectManager : MonoBehaviour
 {
+    //use a list to add all the search objects together
     List<GameObject> SearchObjects = new List<GameObject>();
     int index;
     public GameObject itemFound;
@@ -18,12 +19,15 @@ public class ObjectManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //add all the searchobjects to a list
         foreach (GameObject g in GameObject.FindGameObjectsWithTag("SearchObject"))
         {
             SearchObjects.Add(g);
         }
+        //determine a random index
         index = Random.Range(0, SearchObjects.Count);
 
+        //give the randomly selected search object a gear
         SearchObjects[index].GetComponent<SearchObject>().searchItem = itemFound;
     }
 
