@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(PauseMenu.isPaused == false)
+        if(PauseMenu.isPaused == false && SearchObject.IsSearching == false)
         {
             //set velocity to input
             if (horizontal != 0 && vertical != 0) // Check for diagonal movement
@@ -139,6 +139,11 @@ public class PlayerController : MonoBehaviour
         else if(collision.gameObject.name == "Crowbar")
         {
             heldItemsDatabase[1] = 1;
+            Destroy(collision.gameObject);
+        }
+        else if (collision.gameObject.name == "Gear")
+        {
+            heldItemsDatabase[2] = 1;
             Destroy(collision.gameObject);
         }
     }

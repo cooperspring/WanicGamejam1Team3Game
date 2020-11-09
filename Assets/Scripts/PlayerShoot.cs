@@ -30,7 +30,7 @@ public class PlayerShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (PauseMenu.isPaused == false)
+        if (PauseMenu.isPaused == false && SearchObject.IsSearching == false)
         {
             Timer += Time.deltaTime;
             //spacebar fires
