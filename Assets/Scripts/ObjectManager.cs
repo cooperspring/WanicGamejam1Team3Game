@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/**************************
+ * By: Gryphon Mclaughlin
+ * Date created: 11/9/20
+ * Desc: Add to an object in the same scene as the objects that will be randomized
+**************************/
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.SceneManagement;
 using UnityEngine;
@@ -6,7 +12,7 @@ using UnityEngine;
 public class ObjectManager : MonoBehaviour
 {
     List<GameObject> SearchObjects = new List<GameObject>();
-    int index; /*= Random.Range(0, SearchObjects.Length);*/
+    int index;
     public GameObject itemFound;
     
     // Start is called before the first frame update

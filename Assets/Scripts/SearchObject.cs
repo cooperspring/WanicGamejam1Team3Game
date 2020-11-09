@@ -19,7 +19,7 @@ public class SearchObject : MonoBehaviour
     public int SearchTime;
     [Tooltip("The text that will explain how to search")]
     public string InstructionText = "";
-    [Tooltip("The text that will display while searching")]
+    [Tooltip("The text that will display whiile searching")]
     public string SearchingText = "";
     [Tooltip("The text that will display once the object has been searched")]
     public string FinishedText = "";
@@ -80,23 +80,4 @@ public class SearchObject : MonoBehaviour
     {
         instructions.text = "";
     }
-
-    ////allow for the player to hit space whenever
-    //private void OnCollisionStay2D(Collision2D collision)
-    //{
-    //    if (!Searched)
-    //    {
-    //        Search(collision);
-    //    }
-    //    else
-    //    {
-    //        instructions.text = FinishedText;
-    //    }
-    //}
-
-    ////clear text when leaveing
-    //private void OnCollisionExit2D(Collision2D collision)
-    //{
-    //    instructions.text = "";
-    //}
 }
