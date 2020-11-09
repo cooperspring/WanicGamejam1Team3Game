@@ -13,7 +13,6 @@ public class SearchObject : MonoBehaviour
 {
     public GameObject searchItem;
     public static bool IsSearching;
-    public static bool containsItem;
     Collider2D SearchObjectCollider;
     bool Searched = false;
     [Tooltip("Time in seconds it takes to search")]
@@ -39,20 +38,17 @@ public class SearchObject : MonoBehaviour
         
     }
 
-    private void Search(Collision2D collision)
+    private void Search()
     {
-        if (collision.gameObject.tag == "Player")
+        if (!IsSearching)
         {
-            if (!IsSearching)
-            {
-                instructions.text = InstructionText;
-            }
-            if (Input.GetAxisRaw("Jump") > 0)
-            {
-                IsSearching = true;
-                instructions.text = SearchingText;
-                StartCoroutine(SearchWait());
-            }
+            instructions.text = InstructionText;
+        }
+        if (Input.GetAxisRaw("Jump") > 0)
+        {
+            IsSearching = true;
+            instructions.text = SearchingText;
+            StartCoroutine(SearchWait());
         }
     }
 
@@ -63,20 +59,15 @@ public class SearchObject : MonoBehaviour
         Searched = true;
         IsSearching = false;
         instructions.text = FinishedText;
-        //allow player to go over search object to collect search item
-        SearchObjectCollider.enabled = false;
-        if (containsItem)
-        {
-            Instantiate<GameObject>(searchItem, transform.position, Quaternion.identity);
-        }
+        Instantiate<GameObject>(searchItem, transform.position, Quaternion.identity);
     }
 
-    //allow for the player to hit space whenever
-    private void OnCollisionStay2D(Collision2D collision)
+    //notice when a trigger hits the piece
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (!Searched)
+        if(!Searched)
         {
-            Search(collision);
+            Search();
         }
         else
         {
@@ -84,9 +75,28 @@ public class SearchObject : MonoBehaviour
         }
     }
 
-    //clear text when leaveing
-    private void OnCollisionExit2D(Collision2D collision)
+    //clear text when leaving
+    private void OnTriggerExit2D(Collider2D collision)
     {
         instructions.text = "";
     }
+
+    ////allow for the player to hit space whenever
+    //private void OnCollisionStay2D(Collision2D collision)
+    //{
+    //    if (!Searched)
+    //    {
+    //        Search(collision);
+    //    }
+    //    else
+    //    {
+    //        instructions.text = FinishedText;
+    //    }
+    //}
+
+    ////clear text when leaveing
+    //private void OnCollisionExit2D(Collision2D collision)
+    //{
+    //    instructions.text = "";
+    //}
 }

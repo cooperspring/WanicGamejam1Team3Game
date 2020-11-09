@@ -141,7 +141,7 @@ public class PlayerController : MonoBehaviour
             heldItemsDatabase[1] = 1;
             Destroy(collision.gameObject);
         }
-        else if (collision.gameObject.name == "Gear")
+        else if (collision.gameObject.tag == "Gear")
         {
             heldItemsDatabase[2] = 1;
             Destroy(collision.gameObject);

@@ -263,10 +263,20 @@ PrefabInstance:
       propertyPath: instructions
       value: 
       objectReference: {fileID: 1394899675}
+    - target: {fileID: -4297132039894633370, guid: c4b9a03eb0559d24eb95c8e44dd32933,
+        type: 3}
+      propertyPath: searchItem
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 286806375614438312, guid: c4b9a03eb0559d24eb95c8e44dd32933,
         type: 3}
       propertyPath: m_Name
       value: Search Item 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 286806375614438312, guid: c4b9a03eb0559d24eb95c8e44dd32933,
+        type: 3}
+      propertyPath: m_TagString
+      value: SearchObject
       objectReference: {fileID: 0}
     - target: {fileID: 3072056897304849275, guid: c4b9a03eb0559d24eb95c8e44dd32933,
         type: 3}
@@ -709,10 +719,20 @@ PrefabInstance:
       propertyPath: instructions
       value: 
       objectReference: {fileID: 1394899675}
+    - target: {fileID: -4297132039894633370, guid: c4b9a03eb0559d24eb95c8e44dd32933,
+        type: 3}
+      propertyPath: searchItem
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 286806375614438312, guid: c4b9a03eb0559d24eb95c8e44dd32933,
         type: 3}
       propertyPath: m_Name
       value: Search Item 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 286806375614438312, guid: c4b9a03eb0559d24eb95c8e44dd32933,
+        type: 3}
+      propertyPath: m_TagString
+      value: SearchObject
       objectReference: {fileID: 0}
     - target: {fileID: 3072056897304849275, guid: c4b9a03eb0559d24eb95c8e44dd32933,
         type: 3}
@@ -852,7 +872,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -870,10 +890,20 @@ PrefabInstance:
       propertyPath: instructions
       value: 
       objectReference: {fileID: 1394899675}
+    - target: {fileID: -4297132039894633370, guid: c4b9a03eb0559d24eb95c8e44dd32933,
+        type: 3}
+      propertyPath: searchItem
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 286806375614438312, guid: c4b9a03eb0559d24eb95c8e44dd32933,
         type: 3}
       propertyPath: m_Name
       value: Search Item 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 286806375614438312, guid: c4b9a03eb0559d24eb95c8e44dd32933,
+        type: 3}
+      propertyPath: m_TagString
+      value: SearchObject
       objectReference: {fileID: 0}
     - target: {fileID: 3072056897304849275, guid: c4b9a03eb0559d24eb95c8e44dd32933,
         type: 3}
@@ -1321,10 +1351,20 @@ PrefabInstance:
       propertyPath: instructions
       value: 
       objectReference: {fileID: 1394899675}
+    - target: {fileID: -4297132039894633370, guid: c4b9a03eb0559d24eb95c8e44dd32933,
+        type: 3}
+      propertyPath: searchItem
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 286806375614438312, guid: c4b9a03eb0559d24eb95c8e44dd32933,
         type: 3}
       propertyPath: m_Name
       value: Search Item 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 286806375614438312, guid: c4b9a03eb0559d24eb95c8e44dd32933,
+        type: 3}
+      propertyPath: m_TagString
+      value: SearchObject
       objectReference: {fileID: 0}
     - target: {fileID: 3072056897304849275, guid: c4b9a03eb0559d24eb95c8e44dd32933,
         type: 3}
@@ -2092,10 +2132,20 @@ PrefabInstance:
       propertyPath: instructions
       value: 
       objectReference: {fileID: 1394899675}
+    - target: {fileID: -4297132039894633370, guid: c4b9a03eb0559d24eb95c8e44dd32933,
+        type: 3}
+      propertyPath: searchItem
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 286806375614438312, guid: c4b9a03eb0559d24eb95c8e44dd32933,
         type: 3}
       propertyPath: m_Name
       value: Search Item 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 286806375614438312, guid: c4b9a03eb0559d24eb95c8e44dd32933,
+        type: 3}
+      propertyPath: m_TagString
+      value: SearchObject
       objectReference: {fileID: 0}
     - target: {fileID: 3072056897304849275, guid: c4b9a03eb0559d24eb95c8e44dd32933,
         type: 3}
@@ -2408,10 +2458,20 @@ PrefabInstance:
       propertyPath: instructions
       value: 
       objectReference: {fileID: 1394899675}
+    - target: {fileID: -4297132039894633370, guid: c4b9a03eb0559d24eb95c8e44dd32933,
+        type: 3}
+      propertyPath: searchItem
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 286806375614438312, guid: c4b9a03eb0559d24eb95c8e44dd32933,
         type: 3}
       propertyPath: m_Name
       value: Search Item 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 286806375614438312, guid: c4b9a03eb0559d24eb95c8e44dd32933,
+        type: 3}
+      propertyPath: m_TagString
+      value: SearchObject
       objectReference: {fileID: 0}
     - target: {fileID: 3072056897304849275, guid: c4b9a03eb0559d24eb95c8e44dd32933,
         type: 3}
@@ -3312,7 +3372,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -3367,8 +3427,9 @@ GameObject:
   m_Component:
   - component: {fileID: 739271870}
   - component: {fileID: 739271869}
+  - component: {fileID: 739271871}
   m_Layer: 0
-  m_Name: Cabinet 1
+  m_Name: Cabinet 1/Gear Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3438,6 +3499,20 @@ Transform:
   m_Father: {fileID: 1327659352}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &739271871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 739271868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07bf7b12ca341ce488aef25b426a1f70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemFound: {fileID: 2095924368136053567, guid: 76eb3ad57c095d74b8fb69667b2d7d2a,
+    type: 3}
 --- !u!1 &764729554
 GameObject:
   m_ObjectHideFlags: 0
@@ -3708,7 +3783,7 @@ PrefabInstance:
     - target: {fileID: 8913321937363622694, guid: 932a75ca36530e143b59c4557a3b2889,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8913321937363622695, guid: 932a75ca36530e143b59c4557a3b2889,
         type: 3}
@@ -3763,6 +3838,11 @@ PrefabInstance:
     - target: {fileID: 8913321937363622695, guid: 932a75ca36530e143b59c4557a3b2889,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8913321937363622713, guid: 932a75ca36530e143b59c4557a3b2889,
+        type: 3}
+      propertyPath: m_BodyType
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8913321937363622715, guid: 932a75ca36530e143b59c4557a3b2889,
@@ -4214,7 +4294,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -4410,7 +4490,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -4994,7 +5074,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -5138,7 +5218,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -3.5527137e-14, y: -0.00000039736435}
@@ -5160,7 +5240,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -5224,10 +5304,20 @@ PrefabInstance:
       propertyPath: instructions
       value: 
       objectReference: {fileID: 1394899675}
+    - target: {fileID: -4297132039894633370, guid: c4b9a03eb0559d24eb95c8e44dd32933,
+        type: 3}
+      propertyPath: searchItem
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 286806375614438312, guid: c4b9a03eb0559d24eb95c8e44dd32933,
         type: 3}
       propertyPath: m_Name
       value: Search Item 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 286806375614438312, guid: c4b9a03eb0559d24eb95c8e44dd32933,
+        type: 3}
+      propertyPath: m_TagString
+      value: SearchObject
       objectReference: {fileID: 0}
     - target: {fileID: 3072056897304849275, guid: c4b9a03eb0559d24eb95c8e44dd32933,
         type: 3}
@@ -5877,7 +5967,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -7147,7 +7237,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!224 &1879675830
 RectTransform:
@@ -7272,10 +7362,20 @@ PrefabInstance:
       propertyPath: instructions
       value: 
       objectReference: {fileID: 1394899675}
+    - target: {fileID: -4297132039894633370, guid: c4b9a03eb0559d24eb95c8e44dd32933,
+        type: 3}
+      propertyPath: searchItem
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 286806375614438312, guid: c4b9a03eb0559d24eb95c8e44dd32933,
         type: 3}
       propertyPath: m_Name
       value: Search Item 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 286806375614438312, guid: c4b9a03eb0559d24eb95c8e44dd32933,
+        type: 3}
+      propertyPath: m_TagString
+      value: SearchObject
       objectReference: {fileID: 0}
     - target: {fileID: 3072056897304849275, guid: c4b9a03eb0559d24eb95c8e44dd32933,
         type: 3}
@@ -7388,7 +7488,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -7406,10 +7506,20 @@ PrefabInstance:
       propertyPath: instructions
       value: 
       objectReference: {fileID: 1394899675}
+    - target: {fileID: -4297132039894633370, guid: c4b9a03eb0559d24eb95c8e44dd32933,
+        type: 3}
+      propertyPath: searchItem
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 286806375614438312, guid: c4b9a03eb0559d24eb95c8e44dd32933,
         type: 3}
       propertyPath: m_Name
       value: Search Item 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 286806375614438312, guid: c4b9a03eb0559d24eb95c8e44dd32933,
+        type: 3}
+      propertyPath: m_TagString
+      value: SearchObject
       objectReference: {fileID: 0}
     - target: {fileID: 3072056897304849275, guid: c4b9a03eb0559d24eb95c8e44dd32933,
         type: 3}
