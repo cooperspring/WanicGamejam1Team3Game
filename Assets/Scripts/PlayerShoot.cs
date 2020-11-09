@@ -61,8 +61,8 @@ public class PlayerShoot : MonoBehaviour
                 //set bullet velocity
                 projFlareGun.GetComponent<Rigidbody2D>().velocity = (direction * ProjectileSpeed) + (Vector3)myRb.velocity;
                 //move bullet
-                projFlareGun.transform.Translate(Vector3.up * 0.90f, Space.Self);
-                projFlareGun.transform.Translate(Vector3.right * 0.235f, Space.Self);
+                projFlareGun.transform.Translate(Vector3.up * 0.80f, Space.Self);
+                projFlareGun.transform.Translate(Vector3.right * 0.475f, Space.Self);
                 AudioManage.PlaySound("flareShot");
 
                 break;
@@ -71,17 +71,15 @@ public class PlayerShoot : MonoBehaviour
                 //set bullet velocity
                 projHarpoonGun.GetComponent<Rigidbody2D>().velocity = (direction * ProjectileSpeed) + (Vector3)myRb.velocity;
                 //move bullet
-                projHarpoonGun.transform.Translate(Vector3.up * 0.90f, Space.Self);
-                projHarpoonGun.transform.Translate(Vector3.right * 0.235f, Space.Self);
+                projHarpoonGun.transform.Translate(Vector3.up * 0.80f, Space.Self);
+                projHarpoonGun.transform.Translate(Vector3.right * 0.475f, Space.Self);
                 break;
         }
         
         GameObject newMuzzleFlash = Instantiate<GameObject>(MuzzleFlashEffect, position, transform.rotation);
         //move flash
-        newMuzzleFlash.transform.Translate(Vector3.up * 0.69f, Space.Self);
-        newMuzzleFlash.transform.Translate(Vector3.right * 0.235f, Space.Self);
-        
-        
+        newMuzzleFlash.transform.Translate(Vector3.up * 0.80f, Space.Self);
+        newMuzzleFlash.transform.Translate(Vector3.right * 0.475f, Space.Self);
         
     }
 }

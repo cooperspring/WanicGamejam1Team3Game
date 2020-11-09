@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 8913321937363622695}
   - component: {fileID: 8913321937363622694}
   - component: {fileID: 8913321937363622713}
-  - component: {fileID: 8913321937363622712}
   - component: {fileID: 8913321937363622692}
   - component: {fileID: 8913321937363622693}
   - component: {fileID: 8913321937363622690}
+  - component: {fileID: 2649037252990975227}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -107,35 +107,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!60 &8913321937363622712
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8913321937363622715}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0.01, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5118553, y: 0.5058914}
-    oldSize: {x: 1.01, y: 0.76}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.5, y: -0.5}
-      - {x: -0.5, y: 0.5}
-      - {x: 0.5, y: 0.5}
-      - {x: 0.5, y: -0.5}
 --- !u!114 &8913321937363622692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,6 +121,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 5
   TurnSpeed: 900
+  spriteRenderer: {fileID: 8913321937363622694}
+  defaultPlayerSprite: {fileID: 21300000, guid: cba770e018191fd41bed5f2db76a9575,
+    type: 3}
+  flareGunPlayerSprite: {fileID: 21300000, guid: 915b9c75b1dc2f44c9c0ec4bc1aee01c,
+    type: 3}
+  HarpoonGunPlayerSprite: {fileID: 21300000, guid: e61292eee51f5ec438cb4804ddc990f3,
+    type: 3}
 --- !u!114 &8913321937363622693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,10 +160,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProjectileFlareGun: {fileID: 1326157760331656949, guid: 1c190fad72eb16e498118749d506edb2,
     type: 3}
-  ProjectileHarpoonGun: {fileID: 0}
+  ProjectileHarpoonGun: {fileID: 8822875903187583888, guid: 57a1f7f05f0a96749bd83e8d0995b3c3,
+    type: 3}
   MuzzleFlashEffect: {fileID: 7888507379226866217, guid: b9cc9027d944fa44db602bed5ad10be9,
     type: 3}
   myRb: {fileID: 1326157760331656951, guid: 1c190fad72eb16e498118749d506edb2, type: 3}
   ProjectileSpeed: 20
   Cooldown: 1
   Timer: 0
+--- !u!58 &2649037252990975227
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8913321937363622715}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.011973858, y: -0.066903174}
+  serializedVersion: 2
+  m_Radius: 0.44257432

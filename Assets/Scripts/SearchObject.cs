@@ -20,7 +20,7 @@ public class SearchObject : MonoBehaviour
     public int SearchTime;
     [Tooltip("The text that will explain how to search")]
     public string InstructionText = "";
-    [Tooltip("The text that will display whiile searching")]
+    [Tooltip("The text that will display while searching")]
     public string SearchingText = "";
     [Tooltip("The text that will display once the object has been searched")]
     public string FinishedText = "";
