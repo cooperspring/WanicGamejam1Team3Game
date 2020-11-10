@@ -12,6 +12,7 @@ using Unity.Mathematics;
 
 public class PlayerController : MonoBehaviour
 {
+
     public float Speed = 50;
     public float TurnSpeed = 10f;
     Rigidbody2D myRB;
@@ -46,6 +47,9 @@ public class PlayerController : MonoBehaviour
         //get the input from player
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
+        //get position
+        PlayerLOSLighting.playerDirection = myRB.velocity;
+        PlayerLOSLighting.playerLocation = transform.position;
     }
 
     private void FixedUpdate()
@@ -59,7 +63,6 @@ public class PlayerController : MonoBehaviour
                 horizontal *= moveLimiter;
                 vertical *= moveLimiter;
             }
-
             //set the velocity of the player to the input values
             myRB.velocity = new Vector2(horizontal * Speed, vertical * Speed);
 
@@ -84,17 +87,17 @@ public class PlayerController : MonoBehaviour
              */
             if (horizontal > 0 && vertical == 0)
             {
-                myRB.SetRotation(-90);
+                myRB.SetRotation(270);
             }
 
             if (horizontal > 0 && vertical > 0)
             {
-                myRB.SetRotation(-45);
+                myRB.SetRotation(315);
             }
 
             if (horizontal == 0 && vertical > 0)
             {
-                myRB.SetRotation(0);
+                myRB.SetRotation(360);
             }
 
             if (horizontal < 0 && vertical > 0)

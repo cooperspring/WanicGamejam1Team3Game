@@ -13,12 +13,14 @@ public class AIShark : MonoBehaviour
     public bool inLungeCooldown;
     public bool countDownLunge;
     public bool movingToStoredTarget;
+    public bool playerInLOS;
     public float speed = 5f;
     public float startLungeDistance = 6f;
     public float lungeCooldown = 0.4f;
     public float lungeTimer = 0.4f;
     private Transform target;
     public Rigidbody2D sharkRB;
+    public PolygonCollider2D sharkViewCone;
     public Vector2 storedTarget;
 
     // Start is called before the first frame update
@@ -31,6 +33,9 @@ public class AIShark : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Check for LOS
+        CheckForPlayerLOS();
+
         if (activeChase)
         {
             //if the booleans here are true, we want to do them every frame that the shark is in chase state 
@@ -74,23 +79,18 @@ public class AIShark : MonoBehaviour
 
             //we only want to directly chase a certain distance from the player and when we aren't doing anything lunge related
             //if the player is in range, we record the player's location and let the boolean update loops do the rest
-            if (Vector2.Distance(transform.position, target.position) > 5f && inLungeCooldown == false && movingToStoredTarget == false 
+            if (playerInLOS == true && inLungeCooldown == false && movingToStoredTarget == false 
                 && countDownLunge == false)
             {
-                //if far enough away and not in cooldown, move towards player
+                //if in range away and not in cooldown/lunging, move towards player
                 MoveTowards(target.position);
                 RotateTowards(target.position);
             }
-            else if (Vector2.Distance(transform.position, target.position) <= 5f && inLungeCooldown == false && movingToStoredTarget == false)
-            {
-                //record the player's position to lunge to
-                if (countDownLunge != true)
-                {
-                    storedTarget = target.position;
-                }
 
-                //start the lunge timer
-                countDownLunge = true;
+            if (playerInLOS == true && Vector2.Distance(transform.position, target.position) <= 3f 
+                && inLungeCooldown == false && movingToStoredTarget == false)
+            {
+                SharkLunge();
             }
 
         }
@@ -111,5 +111,33 @@ public class AIShark : MonoBehaviour
         direction.Normalize();
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(Vector3.forward * (angle + offset));
+    }
+
+    public void SharkLunge()
+    {
+        //record the player's position to lunge to
+        if (countDownLunge != true)
+        {
+            storedTarget = target.position;
+        }
+
+        //start the lunge timer
+        countDownLunge = true;
+    }
+
+    public void CheckForPlayerLOS()
+    {
+        //makes a new line with endpoint player starting from the shark's position
+        RaycastHit2D hit = Physics2D.Linecast(transform.position, target.position, 1 << LayerMask.NameToLayer("Action"));
+
+        //checks if the hit's collider is valid and hitting the player, and checks in player is in view cone
+        if(hit.collider != null && SharkViewCone.playerInViewCone == true && hit.collider.gameObject.name == "Player")
+        {
+            playerInLOS = true;
+        }
+        else
+        {
+            playerInLOS = false;
+        }
     }
 }
