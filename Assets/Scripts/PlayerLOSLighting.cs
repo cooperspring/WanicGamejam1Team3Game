@@ -17,7 +17,7 @@ public class PlayerLOSLighting : MonoBehaviour
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
         origin = Vector3.zero;
-        fov = 90f;
+        fov = 180f;
     }
 
     private void LateUpdate()
@@ -27,7 +27,7 @@ public class PlayerLOSLighting : MonoBehaviour
         int rayCount = 50;
         float angle = startingAngle;
         float angleIncrease = fov / rayCount;
-        float viewDistance = 50f;
+        float viewDistance = 5f;
 
 
         Vector3[] vertices = new Vector3[rayCount + 1 + 1];
@@ -43,7 +43,7 @@ public class PlayerLOSLighting : MonoBehaviour
         {
             Vector3 vertex;
             
-            RaycastHit2D raycastHit2D = Physics2D.Raycast(origin * 0.2f, GetVectorFromAngle(angle), viewDistance, 1 << LayerMask.NameToLayer("Action"));
+            RaycastHit2D raycastHit2D = Physics2D.Raycast(origin, GetVectorFromAngle(angle), viewDistance, 1 << LayerMask.NameToLayer("Action"));
             
             if (raycastHit2D.collider == null)
             {
@@ -98,6 +98,6 @@ public class PlayerLOSLighting : MonoBehaviour
 
     public void SetAimDirection(Vector3 aimDirection)
     {
-        startingAngle = GetAngleFromVectorFloat(aimDirection) - fov / 2f;
+        startingAngle = GetAngleFromVectorFloat(aimDirection) + fov / 2f;
     }
 }

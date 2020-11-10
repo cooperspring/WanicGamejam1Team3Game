@@ -21,6 +21,7 @@ public class AIShark : MonoBehaviour
     private Transform target;
     public Rigidbody2D sharkRB;
     public PolygonCollider2D sharkViewCone;
+    public GameObject sharkForwards;
     public Vector2 storedTarget;
 
     // Start is called before the first frame update
@@ -33,6 +34,8 @@ public class AIShark : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        SharkLOSLighting.playerLocation = sharkForwards.transform.position;
+        SharkLOSLighting.playerDirection = (sharkForwards.transform.position - transform.position);
         //Check for LOS
         CheckForPlayerLOS();
 

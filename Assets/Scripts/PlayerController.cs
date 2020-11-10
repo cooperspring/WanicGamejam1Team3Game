@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     public Sprite defaultPlayerSprite;
     public Sprite flareGunPlayerSprite;
     public Sprite HarpoonGunPlayerSprite;
+    public GameObject playerDirection;
     
     //this array will hold up to 10 items. each entry in the array is an itemID, assigning 1 means you have it, 0 means you don't.
     //items will be listed here as added after level design is laid out, 0-10. Weapons are seperately tracked.
@@ -48,8 +49,8 @@ public class PlayerController : MonoBehaviour
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
         //get position
-        PlayerLOSLighting.playerDirection = myRB.velocity;
-        PlayerLOSLighting.playerLocation = transform.position;
+        PlayerLOSLighting.playerDirection = (playerDirection.transform.position - transform.position);
+        PlayerLOSLighting.playerLocation = playerDirection.transform.position;
     }
 
     private void FixedUpdate()
