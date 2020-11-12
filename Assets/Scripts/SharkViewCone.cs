@@ -10,7 +10,6 @@ public class SharkViewCone : MonoBehaviour
         if (collision.gameObject.name == "Player")
         {
             playerInViewCone = true;
-            Debug.Log("Player Entered View Cone");
         }
     }
 

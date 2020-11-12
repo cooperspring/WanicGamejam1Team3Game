@@ -13,6 +13,7 @@ public class AIShark : MonoBehaviour
     public bool inLungeCooldown;
     public bool countDownLunge;
     public bool movingToStoredTarget;
+    public bool noTargetFound;
     public bool playerInLOS;
     public float speed = 5f;
     public float startLungeDistance = 6f;
@@ -137,10 +138,12 @@ public class AIShark : MonoBehaviour
         if(hit.collider != null && SharkViewCone.playerInViewCone == true && hit.collider.gameObject.name == "Player")
         {
             playerInLOS = true;
+            noTargetFound = false;
         }
         else
         {
             playerInLOS = false;
+            noTargetFound = true;
         }
     }
 }
