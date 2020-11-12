@@ -18,7 +18,6 @@ public class SharkViewCone : MonoBehaviour
         if (collision.gameObject.name == "Player")
         {
             playerInViewCone = false;
-            Debug.Log("Player Exited View Cone");
         }
     }
     public void OnTriggerStay2D(Collider2D collision)

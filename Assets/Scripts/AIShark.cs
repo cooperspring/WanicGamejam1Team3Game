@@ -2,6 +2,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class AIShark : MonoBehaviour
@@ -13,23 +14,45 @@ public class AIShark : MonoBehaviour
     public bool inLungeCooldown;
     public bool countDownLunge;
     public bool movingToStoredTarget;
+    public bool activeChaseLook;
     public bool noTargetFound;
+    public bool canPassiveRoam;
     public bool playerInLOS;
     public float speed = 5f;
     public float startLungeDistance = 6f;
-    public float lungeCooldown = 0.4f;
+    public float lungeCooldown = 2f;
     public float lungeTimer = 0.4f;
+    public float endChaseTimer = 5f;
     private Transform target;
     public Rigidbody2D sharkRB;
+    private float storedSharkRotation;
     public PolygonCollider2D sharkViewCone;
     public GameObject sharkForwards;
     public Vector2 storedTarget;
+    public GameObject holdingPoint;
+    private int currentTargetWaypoint = 0;
+    private Vector2[] waypoints = null;
 
     // Start is called before the first frame update
     void Start()
     {
         sharkRB = GetComponent<Rigidbody2D>();
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+    }
+
+    private void Awake()
+    {
+        Vector2 p1 = GameObject.Find("p1").transform.position;
+        Vector2 p2 = GameObject.Find("p2").transform.position;
+        Vector2 p3 = GameObject.Find("p3").transform.position;
+        Vector2 p4 = GameObject.Find("p4").transform.position;
+        Vector2 p5 = GameObject.Find("p5").transform.position;
+        Vector2 p6 = GameObject.Find("p6").transform.position;
+        Vector2 p7 = GameObject.Find("p7").transform.position;
+        waypoints = new Vector2[7]
+        {
+            p1,p2,p3,p4,p5,p6,p7
+        };
     }
 
     // Update is called once per frame
@@ -48,7 +71,7 @@ public class AIShark : MonoBehaviour
             {
                 //move towards the stored target
                 MoveTowards(storedTarget);
-                RotateTowards(storedTarget);
+                storedSharkRotation = sharkRB.rotation;
                 if((Vector2)transform.position == storedTarget)
                 {
                     //signal that we need to start a cooldown and that we stopped moving
@@ -59,12 +82,20 @@ public class AIShark : MonoBehaviour
 
             if (inLungeCooldown == true)
             {
+                if(sharkRB.rotation != storedSharkRotation)
+                {
+                    sharkRB.rotation = storedSharkRotation;
+                }
                 lungeCooldown -= Time.deltaTime;
                 if (lungeCooldown <= 0)
                 {
-                    lungeCooldown = 0.4f;
-                    //signal that we're ready to move again when possible
                     inLungeCooldown = false;
+                    lungeCooldown = 1f;
+                    //signal that we're ready to move again when possible
+                    if(playerInLOS == false)
+                    {
+                        activeChaseLook = true;
+                    }
                 }
             }
 
@@ -79,6 +110,35 @@ public class AIShark : MonoBehaviour
                     //signal that we're not counting down anymore
                     countDownLunge = false;
                 }
+            }
+
+            //rotate to look for the player
+            if(activeChaseLook == true)
+            {
+                sharkRB.rotation += 2;
+
+                endChaseTimer -= Time.deltaTime;
+                if (endChaseTimer <= 0)
+                {
+                    activeChase = false;
+                    if (canPassiveRoam == true)
+                    {
+                        passiveRoam = true;
+                    }
+                    endChaseTimer = 5f;
+                }
+
+                if (playerInLOS == true)
+                {
+                    activeChaseLook = false;
+                }
+            }
+
+            //if the shark loses los of the player while chasing, it will start to rotate to look for the player
+            if(playerInLOS == false && inLungeCooldown == false && movingToStoredTarget == false
+                && countDownLunge == false && activeChaseLook == false)
+            {
+                activeChaseLook = true;
             }
 
             //we only want to directly chase a certain distance from the player and when we aren't doing anything lunge related
@@ -98,7 +158,37 @@ public class AIShark : MonoBehaviour
             }
 
         }
-        
+        else if (passiveRoam)
+        {
+            speed = 3f;
+
+            if ((Vector2)transform.position == waypoints[currentTargetWaypoint])
+            {
+                currentTargetWaypoint++;
+            }
+
+            if (currentTargetWaypoint > waypoints.Length - 1)
+            {
+                currentTargetWaypoint = 0;
+            }
+
+            if (currentTargetWaypoint == 0)
+            {
+                currentTargetWaypoint = 1;
+            }
+
+
+            RotateTowards(waypoints[currentTargetWaypoint]);
+            MoveTowards(waypoints[currentTargetWaypoint]);
+            if(playerInLOS == true)
+            {
+                passiveRoam = false;
+                activeChase = true;
+                speed = 5f;
+            }
+            
+        }
+
     }
 
     private void MoveTowards(Vector2 target)
@@ -112,7 +202,7 @@ public class AIShark : MonoBehaviour
         //part of code I learned about by searching it up, basically makes the shark look at a target in 2D space.
         var offset = 90f;
         Vector2 direction = target - (Vector2)transform.position;
-        direction.Normalize();
+        //direction.Normalize();
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(Vector3.forward * (angle + offset));
     }

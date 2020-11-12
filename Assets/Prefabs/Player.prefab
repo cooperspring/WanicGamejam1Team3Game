@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 818eaaef9b36e5349834a8fd4a000d14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 4
+  Speed: 6
   TurnSpeed: 900
   spriteRenderer: {fileID: 8913321937363622694}
   defaultPlayerSprite: {fileID: 21300000, guid: cba770e018191fd41bed5f2db76a9575,
