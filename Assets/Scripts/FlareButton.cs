@@ -13,9 +13,9 @@ public class FlareButton : MonoBehaviour
     public ParticleSystem flareEffect;
     public Vector3 particlePosition;
     [Tooltip("The normal color of the button")]
-    public Color normalColor;
+    public Sprite normalSprite;
     [Tooltip("The color of the button when pressed")]
-    public Color pressedColor;
+    public Sprite pressedSprite;
     public float Cooldown;
     float Timer;
     SpriteRenderer mySR;
@@ -39,11 +39,11 @@ public class FlareButton : MonoBehaviour
     //trigger when the player overlaps the button
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //change sprite color slightly to show that the button was pressed
-        mySR.color = pressedColor;
+        //change sprite to show that the button was pressed
+        mySR.sprite = pressedSprite;
 
         //only shoot when the button is off cooldown
-        if (Timer >= Cooldown)
+        if (Timer >= Cooldown && !FindObjectOfType<ParticleSystem>())
         {
             //create the flare effect and reset timer
             Instantiate<ParticleSystem>(flareEffect, particlePosition, Quaternion.identity);
@@ -54,6 +54,6 @@ public class FlareButton : MonoBehaviour
     //change color back when the player leaves the button
     private void OnTriggerExit2D(Collider2D collision)
     {
-        mySR.color = normalColor;
+        mySR.sprite = normalSprite;
     }
 }

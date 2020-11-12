@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 4724904034863651000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 61.5, y: -1.1, z: 0}
-  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f70c1da9231660346bfae4ed813d2d86, type: 3}
+  m_Sprite: {fileID: 21300000, guid: da9ea1405184a0f4bb06cde5807b923b, type: 3}
   m_Color: {r: 0.754717, g: 0.039159846, b: 0.039159846, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,7 +100,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.1428572, y: 1.1428572}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -124,6 +124,6 @@ MonoBehaviour:
   flareEffect: {fileID: 5057655985695075393, guid: 6dafc373c57bd134888f36061333e076,
     type: 3}
   particlePosition: {x: 0, y: 0, z: 0}
-  normalColor: {r: 0.7529412, g: 0.039215688, b: 0.039215688, a: 1}
-  pressedColor: {r: 0.5176471, g: 0.039215688, b: 0.039215688, a: 1}
+  normalSprite: {fileID: 21300000, guid: da9ea1405184a0f4bb06cde5807b923b, type: 3}
+  pressedSprite: {fileID: 21300000, guid: 9bc70cdddd8ec2646ad76589a2de72b7, type: 3}
   Cooldown: 20
