@@ -2933,7 +2933,17 @@ PrefabInstance:
     - target: {fileID: 4468248955244980704, guid: 3794a725de9d68946a1215dcc2469bfe,
         type: 3}
       propertyPath: m_Color.r
-      value: 0.7529412
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4468248955244980704, guid: 3794a725de9d68946a1215dcc2469bfe,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4468248955244980704, guid: 3794a725de9d68946a1215dcc2469bfe,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4724904034863651000, guid: 3794a725de9d68946a1215dcc2469bfe,
         type: 3}
@@ -4803,7 +4813,11 @@ PrefabInstance:
     - target: {fileID: 8913321937363622695, guid: 932a75ca36530e143b59c4557a3b2889,
         type: 3}
       propertyPath: m_LocalPosition.y
+<<<<<<< Updated upstream
       value: -3.7
+=======
+      value: 10
+>>>>>>> Stashed changes
       objectReference: {fileID: 0}
     - target: {fileID: 8913321937363622695, guid: 932a75ca36530e143b59c4557a3b2889,
         type: 3}
@@ -7744,6 +7758,7 @@ GameObject:
   - component: {fileID: 1518764575}
   - component: {fileID: 1518764574}
   - component: {fileID: 1518764576}
+  - component: {fileID: 1518764577}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -7758,13 +7773,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1518764572}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: 70, y: -6, z: 0}
-  m_LocalScale: {x: 1.5, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1560210017}
   m_RootOrder: 26
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!61 &1518764574
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7778,18 +7793,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.00049591064, y: 0.072487116}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.1428572, y: 1.1428572}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.0646973, y: 0.9344344}
   m_EdgeRadius: 0
 --- !u!212 &1518764575
 SpriteRenderer:
@@ -7830,8 +7845,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f70c1da9231660346bfae4ed813d2d86, type: 3}
-  m_Color: {r: 0.4433962, g: 0.3271653, b: 0.08156818, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 19f0535a14010df4086a9039722fba14, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -7853,9 +7868,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27acdf5f51298ac4cb061b2982e94f04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  searchItem: {fileID: 0}
   InstructionText: Press Space to Open Chest
   instructions: {fileID: 1394899675}
+--- !u!114 &1518764577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1518764572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fab150b2cee938469fca432f51625a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  changeSprite: 0
+  newSprite: {fileID: 21300000, guid: b2db98e3feaa0c946ab32f807a2dd350, type: 3}
 --- !u!1 &1524247411
 GameObject:
   m_ObjectHideFlags: 0

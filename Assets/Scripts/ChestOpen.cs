@@ -11,7 +11,6 @@ using UnityEngine.UI;
 
 public class ChestOpen : MonoBehaviour
 {
-    public GameObject searchItem;
     [Tooltip("The text that will explain how to open the chest")]
     public string InstructionText = "";
     [Tooltip("The text object where the text will show up")]
