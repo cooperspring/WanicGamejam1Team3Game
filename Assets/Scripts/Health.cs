@@ -24,6 +24,11 @@ public class Health : MonoBehaviour
     {
         //adjust health
         CurrentHealth += change;
+        //if we change playerhealth, change the health bar as well
+        if(gameObject.name == "Player")
+        {
+            PlayerHealthMeter.UpdatePlayerHealth(CurrentHealth.ToString());
+        }
         //if overhealed set to max
         if(CurrentHealth > MaxHealth)
         {

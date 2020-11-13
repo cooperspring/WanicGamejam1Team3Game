@@ -9,20 +9,25 @@ public class MainMenuControl : MonoBehaviour
     //button bools
     public bool startSelect;
     public bool quitSelect;
-
+    public bool restartSelect;
     private void OnMouseUp()
     {
         //checks if a button was clicked with the start or quit select variable checked, 
         //which is passed because they have a trigger collider
         if (startSelect)
         {
-            //sends to a temp level for testing
-            SceneManager.LoadScene("TestLevel1");
+            //sends to a level
+            SceneManager.LoadScene("MainTestLevel");
         }
 
         if (quitSelect)
         {
             Application.Quit();
+        }
+
+        if (restartSelect)
+        {
+            SceneManager.LoadScene("MainMenu");
         }
     }
 

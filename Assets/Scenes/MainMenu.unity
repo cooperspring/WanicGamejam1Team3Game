@@ -457,6 +457,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startSelect: 1
   quitSelect: 0
+  restartSelect: 0
 --- !u!1 &1070331011
 GameObject:
   m_ObjectHideFlags: 0
@@ -667,7 +668,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1336289546}
-  m_Text: Placeholder Game Name
+  m_Text: At The Bottom
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -873,6 +874,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startSelect: 0
   quitSelect: 1
+  restartSelect: 0
 --- !u!1 &1881023626
 GameObject:
   m_ObjectHideFlags: 0
