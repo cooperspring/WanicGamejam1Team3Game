@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿//Cooper Spring, 11/11/2020, script that uses a mesh and linecasting to make a LOS visualization
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;

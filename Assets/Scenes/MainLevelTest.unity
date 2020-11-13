@@ -488,12 +488,12 @@ PrefabInstance:
     - target: {fileID: 7522490499272916780, guid: 11de390191962ea468d1581518770c30,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 24.74
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7522490499272916780, guid: 11de390191962ea468d1581518770c30,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.39
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7522490499272916780, guid: 11de390191962ea468d1581518770c30,
         type: 3}
@@ -1816,7 +1816,7 @@ PrefabInstance:
     - target: {fileID: 1360361726717697562, guid: d60af3e86a4129042b03fa09c07babc6,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -283.00003
+      value: -283
       objectReference: {fileID: 0}
     - target: {fileID: 1360361726717697562, guid: d60af3e86a4129042b03fa09c07babc6,
         type: 3}
@@ -4800,6 +4800,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 463761757, guid: 932a75ca36530e143b59c4557a3b2889, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.72
+      objectReference: {fileID: 0}
     - target: {fileID: 8913321937363622692, guid: 932a75ca36530e143b59c4557a3b2889,
         type: 3}
       propertyPath: Speed
@@ -4808,12 +4812,12 @@ PrefabInstance:
     - target: {fileID: 8913321937363622695, guid: 932a75ca36530e143b59c4557a3b2889,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.5
+      value: 65.68
       objectReference: {fileID: 0}
     - target: {fileID: 8913321937363622695, guid: 932a75ca36530e143b59c4557a3b2889,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10
+      value: 2.42
       objectReference: {fileID: 0}
     - target: {fileID: 8913321937363622695, guid: 932a75ca36530e143b59c4557a3b2889,
         type: 3}
@@ -5459,6 +5463,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 392586461457678043, guid: 205a193e0932c8144b7e0f5a7176cc8f,
+        type: 3}
+      propertyPath: meshCollider
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 392586461457678046, guid: 205a193e0932c8144b7e0f5a7176cc8f,
         type: 3}

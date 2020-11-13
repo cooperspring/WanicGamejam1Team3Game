@@ -1,7 +1,7 @@
 ﻿//Cooper Spring, 11/6/2020, script that controls shark behavior
-
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -20,7 +20,7 @@ public class AIShark : MonoBehaviour
     public bool playerInLOS;
     public float speed = 5f;
     public float startLungeDistance = 6f;
-    public float lungeCooldown = 2f;
+    public float lungeCooldown = 1f;
     public float lungeTimer = 0.4f;
     public float endChaseTimer = 5f;
     private Transform target;
@@ -37,6 +37,7 @@ public class AIShark : MonoBehaviour
     void Start()
     {
         sharkRB = GetComponent<Rigidbody2D>();
+
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 
@@ -49,6 +50,7 @@ public class AIShark : MonoBehaviour
         Vector2 p5 = GameObject.Find("p5").transform.position;
         Vector2 p6 = GameObject.Find("p6").transform.position;
         Vector2 p7 = GameObject.Find("p7").transform.position;
+
         waypoints = new Vector2[7]
         {
             p1,p2,p3,p4,p5,p6,p7
@@ -72,7 +74,8 @@ public class AIShark : MonoBehaviour
                 //move towards the stored target
                 MoveTowards(storedTarget);
                 storedSharkRotation = sharkRB.rotation;
-                if((Vector2)transform.position == storedTarget)
+
+                if ((Vector2)transform.position == storedTarget)
                 {
                     //signal that we need to start a cooldown and that we stopped moving
                     inLungeCooldown = true;
@@ -101,6 +104,7 @@ public class AIShark : MonoBehaviour
 
             if(countDownLunge == true)
             {
+                //wait amount of time before starting the lunge
                 lungeTimer -= Time.deltaTime;
                 if(lungeTimer <= 0)
                 {
@@ -112,22 +116,25 @@ public class AIShark : MonoBehaviour
                 }
             }
 
-            //rotate to look for the player
+            //rotate to look for the player if they escape
             if(activeChaseLook == true)
             {
                 sharkRB.rotation += 2;
 
                 endChaseTimer -= Time.deltaTime;
+                //go back to roam state if player is not found within amount of time
                 if (endChaseTimer <= 0)
                 {
                     activeChase = false;
                     if (canPassiveRoam == true)
                     {
+                        currentTargetWaypoint = CheckForNearestWaypoint();
                         passiveRoam = true;
                     }
                     endChaseTimer = 5f;
                 }
 
+                //resets state when player re-enters
                 if (playerInLOS == true)
                 {
                     activeChaseLook = false;
@@ -150,7 +157,7 @@ public class AIShark : MonoBehaviour
                 MoveTowards(target.position);
                 RotateTowards(target.position);
             }
-
+            //if the player is within lunge distance and everything is normal, start the boolean sequence
             if (playerInLOS == true && Vector2.Distance(transform.position, target.position) <= 3f 
                 && inLungeCooldown == false && movingToStoredTarget == false)
             {
@@ -160,26 +167,23 @@ public class AIShark : MonoBehaviour
         }
         else if (passiveRoam)
         {
+            //make shark slower in roam state
             speed = 3f;
 
+            //when the shark touches a waypoint, add to the value to set the next waypoint
             if ((Vector2)transform.position == waypoints[currentTargetWaypoint])
             {
                 currentTargetWaypoint++;
             }
-
+            //if we go out of the bounds of the index, reset to 0
             if (currentTargetWaypoint > waypoints.Length - 1)
             {
                 currentTargetWaypoint = 0;
             }
 
-            if (currentTargetWaypoint == 0)
-            {
-                currentTargetWaypoint = 1;
-            }
-
-
             RotateTowards(waypoints[currentTargetWaypoint]);
             MoveTowards(waypoints[currentTargetWaypoint]);
+            //when the player enters los, start chasing
             if(playerInLOS == true)
             {
                 passiveRoam = false;
@@ -204,7 +208,7 @@ public class AIShark : MonoBehaviour
         Vector2 direction = target - (Vector2)transform.position;
         //direction.Normalize();
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(Vector3.forward * (angle + offset));
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(Vector3.forward * (angle + offset)), 0.2f);
     }
 
     public void SharkLunge()
@@ -228,12 +232,37 @@ public class AIShark : MonoBehaviour
         if(hit.collider != null && SharkViewCone.playerInViewCone == true && hit.collider.gameObject.name == "Player")
         {
             playerInLOS = true;
-            noTargetFound = false;
         }
         else
         {
             playerInLOS = false;
-            noTargetFound = true;
         }
+    }
+
+    public int CheckForNearestWaypoint()
+    {
+        //set return variable
+        int newWaypointValue = 0;
+        //make an array to store the distances between the waypoints and the shark
+        float[] waypointsDistance = new float[waypoints.Length];
+        //make a for loop to capture the distance
+        for(int i = 0; i < waypoints.Length; i++)
+        {
+            waypointsDistance[i] = Vector2.Distance(transform.position, waypoints[i]);
+            Debug.Log(Vector2.Distance(transform.position, waypoints[i]));
+        }
+        //get the total minumum distance float
+        Debug.Log(waypointsDistance.Min());
+        float minimumDistance = waypointsDistance.Min();
+        //compare the distances and set the return variable to the int (i) that matches the waypoint with the minimum distance
+        for (int i = 0; i < waypoints.Length - 1; i++)
+        {
+            if(minimumDistance == Vector2.Distance(transform.position, waypoints[i]))
+            {
+                newWaypointValue = i;
+            }
+        }
+        //return variable
+        return newWaypointValue;
     }
 }

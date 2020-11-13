@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿//Cooper Spring, 11/10/2020, code that checks if the player is in the shark's view cone and changes public static bool
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
